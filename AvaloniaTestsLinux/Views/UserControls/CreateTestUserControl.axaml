@@ -3,11 +3,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:icon="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
-             xmlns:edit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             xmlns:avalonEdit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             xmlns:viewModels="clr-namespace:AvaloniaTestsLinux.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaTestsLinux.Views.UserControls.CreateTestUserControl">
+             x:Class="AvaloniaTestsLinux.Views.UserControls.CreateTestUserControl"
+             x:DataType="viewModels:CreateTestUserControlViewModel">
     <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, *">
-        <Button Grid.Row="0" Grid.Column="0" Margin="3">
+        <Button Grid.Row="0" Grid.Column="0" Margin="3" 
+                Command="{Binding ReactiveCommandBackRoute}">
             <Button.Content>
                 <icon:SymbolIcon Symbol="ChevronLeft" FontSize="24" />
             </Button.Content>
@@ -15,18 +18,18 @@
         <Label Grid.Row="0" Grid.Column="1"
                Content="{Binding #TextBoxNameGroup.Text}" />
         <ScrollViewer Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
-            <Grid RowDefinitions="Auto, Auto, Auto">
+            <Grid RowDefinitions="Auto, Auto, *">
                 <TextBox x:Name="TextBoxNameGroup" Grid.Row="0" Watermark="Наименования задания"
                          Margin="15" MaxWidth="600" HorizontalContentAlignment="Center" />
                 <TextBox Grid.Row="1" Watermark="Описание задания" 
                          MaxWidth="600" MinHeight="150"/>
                 
-                <edit:TextEditor Grid.Row="2" 
-                                 Text="Hello AvaloniaEdit!"
-                                 ShowLineNumbers="True" SyntaxHighlighting="bash"
-                                 FontFamily="Cascadia Code,Consolas,Menlo,Monospace">
-                    
-                </edit:TextEditor>
+                <avalonEdit:TextEditor Grid.Row="0" Name="Editor"
+                                       FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
+                                       Margin="3"
+                                       HorizontalScrollBarVisibility="Auto"
+                                       VerticalScrollBarVisibility="Visible"
+                                       FontSize="14" SyntaxHighlighting="bash"/>
             </Grid>
         </ScrollViewer>
 

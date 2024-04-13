@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AvaloniaTestsLinux.Views.UserControls;
 
 namespace AvaloniaTestsLinux.ViewModels
 {
@@ -11,7 +12,9 @@ namespace AvaloniaTestsLinux.ViewModels
     {
         public IViewFor ResolveView<T>(T viewModel, string contract = null) => viewModel switch
         {
-            MainUserControl context => new MainUserControl { DataContext = context },
+            CreateTestUserControlViewModel context => new CreateTestUserControl() { DataContext = context },
+            CreateGroupUserControlViewModel context => new CreateGroupUserControl() { DataContext = context },
+            MainUserControlViewModel context => new MainUserControl { DataContext = context },
             _ => throw new ArgumentOutOfRangeException(nameof(viewModel))
         };
     }

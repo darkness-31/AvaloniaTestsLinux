@@ -18,7 +18,7 @@
 	</UserControl.Styles>
 	
 	<Grid RowDefinitions="Auto, *" ColumnDefinitions="Auto, *, Auto">
-		<Button Grid.Row="0" Grid.Column="0" Margin="3">
+		<Button Grid.Row="0" Grid.Column="0" Margin="3" Command="{Binding ReactiveCommandCreateGroup}">
 			<Button.Content>
 				<icon:SymbolIcon Symbol="Add"/>
 			</Button.Content>
