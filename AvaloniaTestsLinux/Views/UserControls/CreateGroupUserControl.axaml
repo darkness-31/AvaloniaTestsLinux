@@ -1,0 +1,61 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:AvaloniaTestsLinux.ViewModels"
+             xmlns:icon="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+             xmlns:modules="clr-namespace:AvaloniaTestsLinux.ViewModels.Modules"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaTestsLinux.Views.UserControls.CreateGroupUserControl"
+             x:DataType="viewModels:CreateGroupUserControlViewModel">
+    <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, Auto, Auto, *, Auto">
+        <Button Grid.Row="0" Grid.Column="0" Margin="3">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="ChevronLeft" FontSize="24"/>
+            </Button.Content>
+        </Button>
+        <Label Grid.Row="0" Grid.Column="1" 
+               Content="{Binding #TextBoxNameGroup.Text}"/>
+        
+        <TextBox x:Name="TextBoxNameGroup" Grid.Row="1" Grid.Column="1" Watermark="Наименования группы" 
+                 Margin="15" Width="600" HorizontalContentAlignment="Center"/>
+        
+        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center">
+            <Button.Content>
+                <Grid ColumnDefinitions="Auto, Auto" HorizontalAlignment="Center">
+                    <icon:SymbolIcon Grid.Column="0" Symbol="Add" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Добавить задание" Margin="3 0 0 0" VerticalAlignment="Center"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+        
+        <ScrollViewer Grid.Row="3" Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding TestLinkCollection}">
+                <ItemsControl.DataTemplates>
+                    <DataTemplate DataType="modules:TestLink">
+                        <Button>
+                            <Button.Content>
+                                <Grid ColumnDefinitions="Auto, *, Auto">
+                                    <TextBlock Grid.Column="0" Text="{Binding Value.Name}"
+                                               Margin="3"/>
+                                    <TextBlock Grid.Column="2" Text="{Binding Value.CreatedAt}"
+                                               Margin="3"/>
+                                </Grid>
+                            </Button.Content>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.DataTemplates>
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <Button Grid.Row="4" Grid.Column="1" Width="130" Margin="5"
+                HorizontalAlignment="Center">
+            <Button.Content>
+                <Grid ColumnDefinitions="Auto, Auto" HorizontalAlignment="Center">
+                    <icon:SymbolIcon Grid.Column="0" Symbol="Save" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Сохранить" Margin="3 0 0 0" VerticalAlignment="Center"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+    </Grid>
+</UserControl>

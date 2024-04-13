@@ -1,6 +1,16 @@
-﻿namespace AvaloniaTestsLinux.ViewModels;
+﻿using AvaloniaTestsLinux.Models;
+using AvaloniaTestsLinux.Models.Utils;
+using AvaloniaTestsLinux.ViewModels;
+using ReactiveUI;
 
-public class MainWindowViewModel : ViewModelBase
+namespace AvaloniaTestsLinux.ViewModels;
+
+public class MainWindowViewModel : ReactiveObject, IScreen
 {
-    public string Greeting => "Welcome to Avalonia!";
+    public RoutingState Router { get; } = new RoutingState();
+
+    public MainWindowViewModel()
+    {
+        Router.Navigate.Execute(new MainUserControlViewModel(this));
+    }
 }

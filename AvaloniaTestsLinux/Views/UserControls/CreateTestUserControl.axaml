@@ -1,0 +1,34 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icon="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+             xmlns:edit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaTestsLinux.Views.UserControls.CreateTestUserControl">
+    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, *">
+        <Button Grid.Row="0" Grid.Column="0" Margin="3">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="ChevronLeft" FontSize="24" />
+            </Button.Content>
+        </Button>
+        <Label Grid.Row="0" Grid.Column="1"
+               Content="{Binding #TextBoxNameGroup.Text}" />
+        <ScrollViewer Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
+            <Grid RowDefinitions="Auto, Auto, Auto">
+                <TextBox x:Name="TextBoxNameGroup" Grid.Row="0" Watermark="Наименования задания"
+                         Margin="15" MaxWidth="600" HorizontalContentAlignment="Center" />
+                <TextBox Grid.Row="1" Watermark="Описание задания" 
+                         MaxWidth="600" MinHeight="150"/>
+                
+                <edit:TextEditor Grid.Row="2" 
+                                 Text="Hello AvaloniaEdit!"
+                                 ShowLineNumbers="True" SyntaxHighlighting="bash"
+                                 FontFamily="Cascadia Code,Consolas,Menlo,Monospace">
+                    
+                </edit:TextEditor>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>
