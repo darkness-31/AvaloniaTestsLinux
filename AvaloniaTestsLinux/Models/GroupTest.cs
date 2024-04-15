@@ -1,5 +1,6 @@
 ﻿using AvaloniaTestsLinux.Models.Utils;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography;
@@ -47,5 +48,19 @@ internal class GroupTest
                             x["modified_at"].Convert<DateTime?>()
                           ));
         return rows.ToArray();
+    }
+
+    public static GroupTest Create(string name)
+    {
+        var id = Guid.NewGuid();
+        var sql = $@"INSERT INTO groups (group_id, name)
+                     VALUES (@id, @name)";
+        sql.SQLNoneQueryWithParametrs(new Dictionary<string, dynamic>()
+        {
+            ["@id"] = id,
+            ["@name"] = name
+        });
+
+        return new GroupTest(id, name, 0, Entity.Get(Entity.eName.complate_state, 0), DateTime.Now, null);
     }
 }

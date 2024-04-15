@@ -1,0 +1,46 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icon="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+             xmlns:viewModels="clr-namespace:AvaloniaTestsLinux.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaTestsLinux.Views.UserControls.TestUserControl"
+             x:DataType="viewModels:TestUserControlViewModel">
+    <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, *, Auto">
+        <Button Grid.Row="0" Grid.Column="0" Margin="3"
+                Command="{Binding ReactiveCommandBackRoute}">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="ChevronLeft" FontSize="24" />
+            </Button.Content>
+        </Button>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"
+               Content="{Binding Value.Name}" />
+        
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Value.Description}"/>
+        
+        <!-- footer -->
+        <Button Grid.Row="2" Grid.Column="0" Margin="3"
+                Command="{Binding ReactiveCommandPrevTest}">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="ArrowLeft" FontSize="24" />
+            </Button.Content>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+                Command="{Binding ReactiveCommandCheck}">
+            <Button.Content>
+                <Grid ColumnDefinitions="Auto, Auto">
+                    <icon:SymbolIcon Grid.Column="0" Symbol="Check" FontSize="24" VerticalAlignment="Center"/>
+                    <TextBlock Grid.Column="1" Text="Проверить" VerticalAlignment="Center"/>
+                </Grid>
+            </Button.Content>
+        </Button>
+        <Button Grid.Row="2" Grid.Column="2" Margin="3"
+                Command="{Binding ReactiveCommandNextTest}">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="ArrowRight" FontSize="24" />
+            </Button.Content>
+        </Button>
+        <!-- footer end -->
+    </Grid>
+</UserControl>

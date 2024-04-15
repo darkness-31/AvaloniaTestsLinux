@@ -66,7 +66,7 @@ public class Test
             ["@id"] = id,
             ["@name"] = name,
             ["@description"] = description,
-            ["@e_complate_state"] = complate.Code,
+            ["@state"] = complate.Code,
             ["@script"] = script
         });
         var testNew = new Test(id, name, description, complate, script, DateTime.Now);

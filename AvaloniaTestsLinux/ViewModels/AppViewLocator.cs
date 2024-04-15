@@ -15,6 +15,8 @@ namespace AvaloniaTestsLinux.ViewModels
             CreateTestUserControlViewModel context => new CreateTestUserControl() { DataContext = context },
             CreateGroupUserControlViewModel context => new CreateGroupUserControl() { DataContext = context },
             MainUserControlViewModel context => new MainUserControl { DataContext = context },
+            GroupUserControlViewModel context => new GroupUserControl() { DataContext = context },
+            TestUserControlViewModel context => new TestUserControl() { DataContext = context },
             _ => throw new ArgumentOutOfRangeException(nameof(viewModel))
         };
     }

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:AvaloniaTestsLinux.ViewModels"
              xmlns:icon="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
-             xmlns:modules="clr-namespace:AvaloniaTestsLinux.ViewModels.Modules"
+             xmlns:models="clr-namespace:AvaloniaTestsLinux.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaTestsLinux.Views.UserControls.CreateGroupUserControl"
              x:DataType="viewModels:CreateGroupUserControlViewModel">
@@ -18,7 +18,8 @@
                Content="{Binding #TextBoxNameGroup.Text}"/>
         
         <TextBox x:Name="TextBoxNameGroup" Grid.Row="1" Grid.Column="1" Watermark="Наименования группы" 
-                 Margin="15" Width="600" HorizontalContentAlignment="Center"/>
+                 Text="{Binding Name}"
+                 Margin="15" MaxWidth="600" HorizontalContentAlignment="Center"/>
         
         <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding ReactiveCommandCreateTest}">
             <Button.Content>
@@ -30,16 +31,14 @@
             </Button.Content>
         </Button>
         
-        <ScrollViewer Grid.Row="3" Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding TestLinkCollection}">
+        <ScrollViewer Grid.Row="3" Grid.Column="1" MaxWidth="600">
+            <ItemsControl ItemsSource="{Binding TestTempCollection}">
                 <ItemsControl.DataTemplates>
-                    <DataTemplate DataType="modules:TestLink">
-                        <Button>
+                    <DataTemplate x:DataType="models:TempTest">
+                        <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Command="{Binding TestEditReactiveCommmand}">
                             <Button.Content>
                                 <Grid ColumnDefinitions="Auto, *, Auto">
-                                    <TextBlock Grid.Column="0" Text="{Binding Value.Name}"
-                                               Margin="3"/>
-                                    <TextBlock Grid.Column="2" Text="{Binding Value.CreatedAt}"
+                                    <TextBlock Grid.Column="0" Text="{Binding Name}"
                                                Margin="3"/>
                                 </Grid>
                             </Button.Content>
@@ -50,7 +49,7 @@
         </ScrollViewer>
         
         <Button Grid.Row="4" Grid.Column="1" Width="130" Margin="5"
-                HorizontalAlignment="Center">
+                HorizontalAlignment="Center" Command="{Binding ReactiveCommandCreate}">
             <Button.Content>
                 <Grid ColumnDefinitions="Auto, Auto" HorizontalAlignment="Center">
                     <icon:SymbolIcon Grid.Column="0" Symbol="Save" VerticalAlignment="Center"/>

@@ -8,30 +8,61 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaTestsLinux.Views.UserControls.CreateTestUserControl"
              x:DataType="viewModels:CreateTestUserControlViewModel">
-    <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto, *">
-        <Button Grid.Row="0" Grid.Column="0" Margin="3" 
+    <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, *,Auto">
+        <Button Grid.Row="0" Grid.Column="0" Margin="3"
                 Command="{Binding ReactiveCommandBackRoute}">
             <Button.Content>
                 <icon:SymbolIcon Symbol="ChevronLeft" FontSize="24" />
             </Button.Content>
         </Button>
-        <Label Grid.Row="0" Grid.Column="1"
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"
                Content="{Binding #TextBoxNameGroup.Text}" />
         <ScrollViewer Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
             <Grid RowDefinitions="Auto, Auto, *">
                 <TextBox x:Name="TextBoxNameGroup" Grid.Row="0" Watermark="Наименования задания"
+                         Text="{Binding Name}"
                          Margin="15" MaxWidth="600" HorizontalContentAlignment="Center" />
-                <TextBox Grid.Row="1" Watermark="Описание задания" 
-                         MaxWidth="600" MinHeight="150"/>
-                
-                <avalonEdit:TextEditor Grid.Row="0" Name="Editor"
-                                       FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
-                                       Margin="3"
-                                       HorizontalScrollBarVisibility="Auto"
-                                       VerticalScrollBarVisibility="Visible"
-                                       FontSize="14" SyntaxHighlighting="bash"/>
+                <TextBox x:Name="TextBoxDescription" Text="{Binding Description}"
+                         Grid.Row="1" Watermark="Описание задания"
+                         MaxWidth="600" MinHeight="150" />
+                <StackPanel Grid.Row="2" Margin="15">
+                    <Grid ColumnDefinitions="Auto, Auto" Margin="0 0 0 5">
+                        <Button x:Name="ButtonOpenFile" Grid.Column="0" Click="Button_OpenOnClick">
+                            <Button.Content>
+                                <DockPanel>
+                                    <icon:SymbolIcon Symbol="FolderOpen" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Открыть файл" VerticalAlignment="Center" Margin="3 0 0 0"/>
+                                </DockPanel>
+                            </Button.Content>
+                        </Button>
+                        <Button x:Name="ButtonSaveFile" Grid.Column="1" Click="Button_SaveOnClick">
+                            <Button.Content>
+                                <DockPanel>
+                                    <icon:SymbolIcon Symbol="Save" VerticalAlignment="Center"/>
+                                    <TextBlock Text="Сохранить" VerticalAlignment="Center" Margin="3 0 0 0"/>
+                                </DockPanel>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                    <avalonEdit:TextEditor Name="Editor"
+                                           Document="{Binding EditorTest}"
+                                           LineNumbersForeground="Green"
+                                           ShowLineNumbers="True" FontSize="14"
+                                           FontFamily="Cascadia Code,Consolas,Menlo,Monospace"
+                                           HorizontalScrollBarVisibility="Auto"
+                                           VerticalScrollBarVisibility="Visible"
+                                           SyntaxHighlighting="bash" />
+                </StackPanel>
             </Grid>
         </ScrollViewer>
-
+        <Button Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" 
+                Command="{Binding ButtonAddTestReactiveCommand}">
+            <Button.Content>
+                <Grid ColumnDefinitions="Auto, Auto">
+                    <icon:SymbolIcon Grid.Column="0" Symbol="Add"/>
+                    <TextBlock Grid.Column="1" Text="Добавить тест" Margin="5 0 0 0"/>
+                </Grid>
+            </Button.Content>
+        </Button>
     </Grid>
 </UserControl>

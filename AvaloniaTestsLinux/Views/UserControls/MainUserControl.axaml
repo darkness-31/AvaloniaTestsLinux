@@ -7,43 +7,45 @@
              xmlns:modules="clr-namespace:AvaloniaTestsLinux.ViewModels.Modules"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaTestsLinux.MainUserControl"
-			 x:DataType="vm:MainUserControlViewModel">
-	<UserControl.Styles>
-		<Style Selector="Button">
-			<Setter Property="VerticalAlignment" Value="Center"/>
-		</Style>
-		<Style Selector="icon|SymbolIcon">
-			<Setter Property="FontSize" Value="24"/>
-		</Style>
-	</UserControl.Styles>
-	
-	<Grid RowDefinitions="Auto, *" ColumnDefinitions="Auto, *, Auto">
-		<Button Grid.Row="0" Grid.Column="0" Margin="3" Command="{Binding ReactiveCommandCreateGroup}">
-			<Button.Content>
-				<icon:SymbolIcon Symbol="Add"/>
-			</Button.Content>
-		</Button>
-		<TextBox Grid.Row="0" Grid.Column="1" Margin="0 3" Watermark="Поиск" VerticalContentAlignment="Center"/>
-		<Button Grid.Row="0" Grid.Column="2" Margin="3">
-			<Button.Content>
-				<icon:SymbolIcon Symbol="Search"/>
-			</Button.Content>
-		</Button>
-		<ItemsControl ItemsSource="{Binding ItemsControlGroups}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-			<ItemsControl.DataTemplates>
-				<DataTemplate DataType="modules:GroupTestLink">
-					<Grid ColumnDefinitions="Auto, *, Auto, Auto">
-						<Label Grid.Column="0" Content="{Binding Value.Name}" 
-						       Margin="3" VerticalContentAlignment="Center"/>
-						<Label Grid.Column="2" Content="{Binding Value.State.Meaning}"
-						       Margin="3" VerticalContentAlignment="Center"/>
-						<Label Grid.Column="3" Content="{Binding Value.ComplatePercent}"
-						       Margin="3" VerticalContentAlignment="Center"/>
-						<Label Grid.Column="3" Content="{Binding WithPercent}"
-						       Margin="3" VerticalContentAlignment="Center"/>
-					</Grid>
-				</DataTemplate>
-			</ItemsControl.DataTemplates>
-		</ItemsControl>
-	</Grid>
+             x:DataType="vm:MainUserControlViewModel">
+    <UserControl.Styles>
+        <Style Selector="Button">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="icon|SymbolIcon">
+            <Setter Property="FontSize" Value="24" />
+        </Style>
+    </UserControl.Styles>
+
+    <Grid RowDefinitions="Auto, *" ColumnDefinitions="Auto, *, Auto">
+        <Button Grid.Row="0" Grid.Column="0" Margin="3" Command="{Binding ReactiveCommandCreateGroup}">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="Add" />
+            </Button.Content>
+        </Button>
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="0 3" Watermark="Поиск" VerticalContentAlignment="Center" />
+        <Button Grid.Row="0" Grid.Column="2" Margin="3">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="Search" />
+            </Button.Content>
+        </Button>
+        <ItemsControl ItemsSource="{Binding ItemsControlGroups}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <ItemsControl.DataTemplates>
+                <DataTemplate DataType="modules:GroupTestLink">
+                    <Button Command="{Binding ReactiveCommandGroupMain}" HorizontalAlignment="Stretch">
+                        <Grid ColumnDefinitions="Auto, *, Auto, Auto">
+                            <Label Grid.Column="0" Content="{Binding Value.Name}"
+                                   Margin="3" VerticalContentAlignment="Center" />
+                            <Label Grid.Column="2" Content="{Binding Value.State.Meaning}"
+                                   Margin="3" VerticalContentAlignment="Center" />
+                            <Label Grid.Column="3" Content="{Binding Value.ComplatePercent}"
+                                   Margin="3" VerticalContentAlignment="Center" />
+                            <Label Grid.Column="3" Content="{Binding WithPercent}"
+                                   Margin="3" VerticalContentAlignment="Center" />
+                        </Grid>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.DataTemplates>
+        </ItemsControl>
+    </Grid>
 </UserControl>

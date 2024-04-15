@@ -6,7 +6,7 @@ using Avalonia.Platform.Storage;
 
 namespace AvaloniaTestsLinux.Models.Utils;
 
-public static class DirectoryScripts
+public static class Dialogs
 {
     private static readonly FilePickerFileType[] FilePickers = new[]
     {
@@ -33,7 +33,7 @@ public static class DirectoryScripts
         return files?.Count >= 1 ? files[0] : null;
     }
 
-    private static async Task<IStorageFile?> DoSaveFilePickerAsync()
+    internal static async Task<IStorageFile?> DoSaveFilePickerAsync()
     {
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow?.StorageProvider is not { } provider)

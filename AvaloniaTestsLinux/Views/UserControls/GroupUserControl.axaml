@@ -1,0 +1,52 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:icon="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
+             xmlns:uc="clr-namespace:AvaloniaTestsLinux.ViewModels"
+             xmlns:modules="clr-namespace:AvaloniaTestsLinux.ViewModels.Modules"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaTestsLinux.Views.UserControls.GroupUserControl"
+             x:DataType="uc:GroupUserControlViewModel">
+    <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto,Auto, *">
+        <Button Grid.Row="0" Grid.Column="0" Margin="3"
+                Command="{Binding ReactiveCommandBackRoute}">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="ChevronLeft" FontSize="24" />
+            </Button.Content>
+        </Button>
+        <Button Grid.Row="0" Grid.Column="2" Margin="3"
+                Command="{Binding ReactiveCommandCreateTest}">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="Add" FontSize="24" />
+            </Button.Content>
+        </Button>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"
+               Content="{Binding Value.Name}" />
+        <TextBox Grid.Row="1" Grid.Column="1" Margin="0 3" Watermark="Поиск" VerticalContentAlignment="Center" />
+        <Button Grid.Row="1" Grid.Column="2" Margin="3" HorizontalContentAlignment="Stretch"
+                Command="{Binding ReactiveCommandTest}">
+            <Button.Content>
+                <icon:SymbolIcon Symbol="Search" />
+            </Button.Content>
+        </Button>
+
+        <ScrollViewer Grid.Row="2" Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding Tests}">
+                <ItemsControl.DataTemplates>
+                    <DataTemplate x:DataType="modules:TestLink">
+                        <Button Command="{Binding ReactiveCommandTestUserControl}" 
+                                HorizontalAlignment="Stretch">
+                            <Grid ColumnDefinitions="Auto, *, Auto" HorizontalAlignment="Stretch">
+                                <TextBlock Grid.Column="0" Text="{Binding Value.Name}" 
+                                           VerticalAlignment="Center" Margin="3"/>
+                                <TextBlock Grid.Column="2" Text="{Binding Value.ComplateState.Meaning}" 
+                                           VerticalAlignment="Center" Margin="3"/>
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.DataTemplates>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

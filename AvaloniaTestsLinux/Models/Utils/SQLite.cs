@@ -58,6 +58,10 @@ internal static class SQLite
                     row[column.ColumnName] = TypeDescriptor.GetConverter(column.DataType)
                                                            .ConvertFromString(sqlReader.GetValue(column.Ordinal).ToString());
                 }
+                else if (typeof(byte[]) == column.DataType)
+                {
+                    row[column.ColumnName] = (byte[])sqlReader.GetValue(column.Ordinal);
+                }
                 else
                 {
                     row[column.ColumnName] = TypeDescriptor.GetConverter(column.DataType)
@@ -146,7 +150,7 @@ internal static class SQLite
             return (T?)TypeDescriptor.GetConverter(typeof(T))
                           .ConvertFromString(obj.ToString());
         }
-        else if (DateTime.TryParse(obj.ToString(), out DateTime resultDateTime))
+        else if (DateTime.TryParse(obj.ToString(), out DateTime resultDateTime) || typeof(T) == typeof(Guid))
         {
             return (T?)TypeDescriptor.GetConverter(typeof(T))
                           .ConvertFrom(obj);
