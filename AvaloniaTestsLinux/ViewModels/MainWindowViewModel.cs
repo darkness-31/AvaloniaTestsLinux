@@ -36,6 +36,8 @@ public class MainWindowViewModel : ReactiveObject, IScreen
                                     uc.Description,
                                     Entity.Get(Entity.eName.complate_state, 0),
                                     Encoding.Default.GetBytes(uc.EditorTest.Text));
+                                Router.NavigateBack.Execute();
+                                Render();
                             });
                             item.Render();
                             Router.Navigate.Execute(uc);
@@ -81,8 +83,8 @@ public class MainWindowViewModel : ReactiveObject, IScreen
                     var tmpTest = new TempTest()
                     {
                         Id = groupCreate.TestTempCollection.Count,
-                        Name = testCreate.Name,
-                        Description = testCreate.Description,
+                        Name = testCreate.Name ?? string.Empty,
+                        Description = testCreate.Description ?? string.Empty,
                         Script = Encoding.Default.GetBytes(testCreate.EditorTest.Text)
                     };
                     groupCreate.TestTempCollection.Add(tmpTest);

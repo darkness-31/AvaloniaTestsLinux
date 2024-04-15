@@ -7,8 +7,8 @@ namespace AvaloniaTestsLinux.ViewModels;
 
 public class CreateTestUserControlViewModel : ViewModelBase
 {
-    internal string Name { get; set; }
-    internal string Description { get; set; }
+    internal string Name { get; set; } = string.Empty;
+    internal string Description { get; set; } = string.Empty;
 
     internal TextDocument EditorTest { get; set; }
         = new TextDocument();

@@ -38,6 +38,7 @@ public class Test
                      	    tests.modified_at
                      FROM tests INNER JOIN
                      	    group_test ON group_test.group_id = @groupId AND
+     		                              group_test.test_id = tests.test_id AND
                      					  group_test.delete_state_code = 0 AND 
                      					  tests.delete_state_code = 0";
         var rows = sql.SQLQueryWithParametrsAsIEnumerable(new System.Collections.Generic.Dictionary<string, dynamic>()

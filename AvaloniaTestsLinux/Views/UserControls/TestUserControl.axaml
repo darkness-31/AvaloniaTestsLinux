@@ -20,12 +20,6 @@
         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Value.Description}"/>
         
         <!-- footer -->
-        <Button Grid.Row="2" Grid.Column="0" Margin="3"
-                Command="{Binding ReactiveCommandPrevTest}">
-            <Button.Content>
-                <icon:SymbolIcon Symbol="ArrowLeft" FontSize="24" />
-            </Button.Content>
-        </Button>
         <Button Grid.Row="2" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
                 Command="{Binding ReactiveCommandCheck}">
             <Button.Content>
@@ -33,12 +27,6 @@
                     <icon:SymbolIcon Grid.Column="0" Symbol="Check" FontSize="24" VerticalAlignment="Center"/>
                     <TextBlock Grid.Column="1" Text="Проверить" VerticalAlignment="Center"/>
                 </Grid>
-            </Button.Content>
-        </Button>
-        <Button Grid.Row="2" Grid.Column="2" Margin="3"
-                Command="{Binding ReactiveCommandNextTest}">
-            <Button.Content>
-                <icon:SymbolIcon Symbol="ArrowRight" FontSize="24" />
             </Button.Content>
         </Button>
         <!-- footer end -->
