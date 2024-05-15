@@ -7,17 +7,21 @@ using System.Security.Cryptography;
 
 namespace AvaloniaTestsLinux.Models;
 
-internal class GroupTest
+public class GroupTest
 {
-    internal Guid Id { get; }
-    internal string Name { get; }
-    internal Entity State { get; private set; }
-    internal uint ComplatePercent { get; private set; }
-    internal DateTime CreatedAt { get; }
-    internal DateTime? ModifiedAt { get; private set; }
-    internal ObservableCollection<Test> Tests { get; } = new ObservableCollection<Test>();
+    public Guid Id { get; }
+    public string Name { get; }
+    public Entity State { get; private set; }
+    public uint ComplatePercent { get; private set; }
+    public DateTime CreatedAt { get; }
+    public DateTime? ModifiedAt { get; private set; }
+    public ObservableCollection<Test> Tests { get; }
 
-    internal GroupTest(Guid id, string name, uint complatePercent, Entity state, DateTime createdAt, DateTime? modifiedAt)
+    public delegate void GroupTestHandler(GroupTest group);
+
+    public static GroupTestHandler? GroupTestCreateEvent;
+    
+    public GroupTest(Guid id, string name, uint complatePercent, Entity state, DateTime createdAt, DateTime? modifiedAt)
     {
         Id = id;
         Name = name;
@@ -28,7 +32,7 @@ internal class GroupTest
         Tests = new ObservableCollection<Test>(Test.GetCollection(id));
     } 
 
-    internal static GroupTest[] GetCollection()
+    public static GroupTest[] GetCollection()
     {
         var sql = $@"SELECT group_id,
                             name,
@@ -43,7 +47,7 @@ internal class GroupTest
                             x["group_id"].Convert<Guid>(),
                             x["name"].Convert<string>(),
                             x["complate_percent"].Convert<uint>(),
-                            Entity.Get(Entity.eName.complate_state, x["e_complate_state"].Convert<int>()),
+                            Entity.Get(Handbook.Entity.NameEnum.complate_state, x["e_complate_state"].Convert<int>()),
                             x["created_at"].Convert<DateTime>(),
                             x["modified_at"].Convert<DateTime?>()
                           ));
@@ -60,7 +64,9 @@ internal class GroupTest
             ["@id"] = id,
             ["@name"] = name
         });
-
-        return new GroupTest(id, name, 0, Entity.Get(Entity.eName.complate_state, 0), DateTime.Now, null);
+        
+        var group = new GroupTest(id, name, 0, Entity.Get(Handbook.Entity.NameEnum.complate_state, 0), DateTime.Now, null);
+        GroupTestCreateEvent?.Invoke(group);
+        return group;
     }
 }

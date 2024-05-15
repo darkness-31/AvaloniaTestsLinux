@@ -9,13 +9,13 @@ using Microsoft.Data.Sqlite;
 
 namespace AvaloniaTestsLinux.Models.Utils;
 
-internal static class SQLite
+public static class SQLite
 {
     private static readonly string _connectionString = "Data Source=Assets\\source.test";
     private static readonly SqliteConnection _connection = new SqliteConnection(_connectionString);
 
-    internal static void Open() => _connection.Open();
-    internal static void Close() => _connection.Close();
+    public static void Open() => _connection.Open();
+    public static void Close() => _connection.Close();
 
     public static IEnumerable<DataRow> SQLQueryWithParametrsAsIEnumerable(this string sql, Dictionary<string, dynamic> parametrs)
     {

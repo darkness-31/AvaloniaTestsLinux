@@ -16,12 +16,12 @@ public class GroupUserControlViewModel : ViewModelBase
     internal ReactiveCommand<Unit, Unit> ReactiveCommandBackRoute { get; set; }
     internal ReactiveCommand<Unit, Unit> ReactiveCommandTest { get; set; }
     
-    internal ObservableCollection<TestLink> Tests { get; set; } = new();
+    internal ObservableCollection<TestVM> Tests { get; set; } = new();
 
     internal GroupUserControlViewModel(IScreen screen, GroupTest group) 
         : base(screen)
     {
         Value = group;
-        Tests.AddRange(Value.Tests.Select(x => new TestLink(x)));
+        Tests.AddRange(Value.Tests.Select(x => new TestVM(x)));
     }
 }

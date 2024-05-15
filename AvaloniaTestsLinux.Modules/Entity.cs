@@ -5,19 +5,14 @@ using AvaloniaTestsLinux.Models.Utils;
 
 namespace AvaloniaTestsLinux.Models;
 
-internal class Entity
+public class Entity
 {
-    internal int Code { get; }
-    internal eName Name { get; }
-    internal string Meaning { get; }
-    internal DateTime CreatedAt { get; }
+    public int Code { get; }
+    public Handbook.Entity.NameEnum Name { get; }
+    public string Meaning { get; }
+    public DateTime CreatedAt { get; }
 
-    internal enum eName
-    {
-        complate_state
-    }
-    
-    internal Entity(int code, eName name, string meaning, DateTime createdAt)
+    public Entity(int code, Handbook.Entity.NameEnum name, string meaning, DateTime createdAt)
     {
         Code = code;
         Name = name;
@@ -25,7 +20,7 @@ internal class Entity
         CreatedAt = createdAt;
     }
 
-    internal static Entity[] GetCollection(eName complate_state)
+    public static Entity[] GetCollection(Handbook.Entity.NameEnum complate_state)
     {
         var sql = $@"SELECT code,
                             meaning,
@@ -40,7 +35,7 @@ internal class Entity
         return rows.Select(x => new Entity(x["code"].Convert<int>(), complate_state, x["meaning"].Convert<string>(), x["created_at"].Convert<DateTime>())).ToArray();
     }
 
-    internal static Entity? Get(eName complate_state, int code)
+    public static Entity? Get(Handbook.Entity.NameEnum complate_state, int code)
     {
         var sql = $@"SELECT meaning,
                             created_at

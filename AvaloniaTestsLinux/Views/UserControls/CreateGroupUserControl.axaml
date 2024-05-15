@@ -5,6 +5,7 @@
              xmlns:viewModels="clr-namespace:AvaloniaTestsLinux.ViewModels"
              xmlns:icon="clr-namespace:FluentIcons.Avalonia;assembly=FluentIcons.Avalonia"
              xmlns:models="clr-namespace:AvaloniaTestsLinux.Models"
+             xmlns:modules="clr-namespace:AvaloniaTestsLinux.ViewModels.Modules"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="AvaloniaTestsLinux.Views.UserControls.CreateGroupUserControl"
              x:DataType="viewModels:CreateGroupUserControlViewModel">
@@ -32,10 +33,11 @@
         </Button>
         
         <ScrollViewer Grid.Row="3" Grid.Column="1" MaxWidth="600">
-            <ItemsControl ItemsSource="{Binding TestTempCollection}">
+            <ItemsControl ItemsSource="{Binding TestCollection}">
                 <ItemsControl.DataTemplates>
-                    <DataTemplate x:DataType="models:TempTest">
-                        <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Command="{Binding TestEditReactiveCommmand}">
+                    <DataTemplate x:DataType="modules:TestVM">
+                        <Button HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" 
+                                Command="{Binding TestEditReactiveCommmand}">
                             <Button.Content>
                                 <Grid ColumnDefinitions="Auto, *, Auto">
                                     <TextBlock Grid.Column="0" Text="{Binding Name}"

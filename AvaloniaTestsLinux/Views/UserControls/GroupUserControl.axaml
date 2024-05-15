@@ -34,7 +34,7 @@
         <ScrollViewer Grid.Row="2" Grid.Column="1">
             <ItemsControl ItemsSource="{Binding Tests}">
                 <ItemsControl.DataTemplates>
-                    <DataTemplate x:DataType="modules:TestLink">
+                    <DataTemplate x:DataType="modules:TestVM">
                         <Button Command="{Binding ReactiveCommandTestUserControl}" 
                                 HorizontalAlignment="Stretch">
                             <Grid ColumnDefinitions="Auto, *, Auto" HorizontalAlignment="Stretch">

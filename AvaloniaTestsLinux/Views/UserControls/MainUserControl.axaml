@@ -31,7 +31,7 @@
         </Button>
         <ItemsControl ItemsSource="{Binding ItemsControlGroups}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
             <ItemsControl.DataTemplates>
-                <DataTemplate DataType="modules:GroupTestLink">
+                <DataTemplate DataType="modules:GroupTestVM">
                     <Button Command="{Binding ReactiveCommandGroupMain}" HorizontalAlignment="Stretch">
                         <Grid ColumnDefinitions="Auto, *, Auto, Auto">
                             <Label Grid.Column="0" Content="{Binding Value.Name}"

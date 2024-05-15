@@ -6,7 +6,7 @@ using ReactiveUI;
 
 namespace AvaloniaTestsLinux.ViewModels.Modules;
 
-public class GroupTestLink
+public class GroupTestVM
 {
     internal GroupTest Value { get; }
     
@@ -14,7 +14,7 @@ public class GroupTestLink
     public ReactiveCommand<Unit, Unit> ReactiveCommandGroupMain { get; set; }
 
 
-    internal GroupTestLink(GroupTest value)
+    internal GroupTestVM(GroupTest value)
     {
         Value = value;
         WithPercent = value.ComplatePercent + "%";

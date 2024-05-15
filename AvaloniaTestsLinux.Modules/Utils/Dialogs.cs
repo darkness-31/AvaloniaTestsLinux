@@ -17,7 +17,7 @@ public static class Dialogs
         }
     };
     
-    internal static async Task<IStorageFile?> DoOpenFilePickerAsync()
+    public static async Task<IStorageFile?> DoOpenFilePickerAsync()
     {
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow?.StorageProvider is not { } provider)
@@ -33,7 +33,7 @@ public static class Dialogs
         return files?.Count >= 1 ? files[0] : null;
     }
 
-    internal static async Task<IStorageFile?> DoSaveFilePickerAsync()
+    public static async Task<IStorageFile?> DoSaveFilePickerAsync()
     {
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop ||
             desktop.MainWindow?.StorageProvider is not { } provider)

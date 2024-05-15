@@ -1,4 +1,4 @@
 .idea
 .vs
-AvaloniaTestsLinux/bin
-AvaloniaTestsLinux/obj
+AvaloniaTestsLinux*/bin
+AvaloniaTestsLinux*/obj

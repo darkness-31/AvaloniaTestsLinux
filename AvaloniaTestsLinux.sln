@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaTestsLinux", "AvaloniaTestsLinux\AvaloniaTestsLinux.csproj", "{2F76ACEA-BADB-4E56-9A13-DE6431B84ADF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaTestsLinux.Modules", "AvaloniaTestsLinux.Modules\AvaloniaTestsLinux.Modules.csproj", "{DEAD076F-9C15-4B27-9A7D-23D15C6ECE6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{2F76ACEA-BADB-4E56-9A13-DE6431B84ADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F76ACEA-BADB-4E56-9A13-DE6431B84ADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F76ACEA-BADB-4E56-9A13-DE6431B84ADF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEAD076F-9C15-4B27-9A7D-23D15C6ECE6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEAD076F-9C15-4B27-9A7D-23D15C6ECE6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEAD076F-9C15-4B27-9A7D-23D15C6ECE6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEAD076F-9C15-4B27-9A7D-23D15C6ECE6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

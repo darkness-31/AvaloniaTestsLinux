@@ -16,16 +16,20 @@
         </Button>
         <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28"
                Content="{Binding Value.Name}" />
-        
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Value.Description}"/>
-        
+
+        <ScrollViewer Grid.Row="1" Grid.Column="1" >
+            <TextBlock FontSize="18" FontWeight="Regular"
+                       Text="{Binding Value.Description}" />
+        </ScrollViewer>
+
         <!-- footer -->
-        <Button Grid.Row="2" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center"
+        <Button Grid.Row="2" Grid.Column="1" Margin="3" HorizontalAlignment="Stretch"
+                HorizontalContentAlignment="Center"
                 Command="{Binding ReactiveCommandCheck}">
             <Button.Content>
                 <Grid ColumnDefinitions="Auto, Auto">
-                    <icon:SymbolIcon Grid.Column="0" Symbol="Check" FontSize="24" VerticalAlignment="Center"/>
-                    <TextBlock Grid.Column="1" Text="Проверить" VerticalAlignment="Center"/>
+                    <icon:SymbolIcon Grid.Column="0" Symbol="Check" FontSize="24" VerticalAlignment="Center" />
+                    <TextBlock Grid.Column="1" Text="Проверить" VerticalAlignment="Center" />
                 </Grid>
             </Button.Content>
         </Button>
